@@ -2,10 +2,12 @@ import { useEffect, useState } from "react";
 
 import { Post } from "../types";
 import ListItem from "../components/ListItem";
+import PieChartCard from "../components/PieChartCard";
 
 const Data = () => {
     const [loading, setLoading] = useState(true);
     const [posts, setPosts] = useState<Post[]>([]);
+    const [userId1Posts, setUserId1Posts] = useState<Post[]>([]);
 
     useEffect(() => {
         const fetchPosts = async () => {
@@ -18,7 +20,8 @@ const Data = () => {
                 }
 
                 const data: Post[] = await response.json();
-                setPosts(data.filter((post) => post.userId === 1));
+                setPosts(data);
+                setUserId1Posts(data.filter((post) => post.userId === 1));
                 setLoading(false);
             } catch (error) {
                 console.error("Error fetching data:", error);
@@ -32,6 +35,11 @@ const Data = () => {
     return (
         <>
             <div className="max-w-screen-md mx-auto my-4">
+                <PieChartCard
+                    userId1Posts={userId1Posts.length}
+                    otherUsersPosts={posts.length - userId1Posts.length}
+                />
+
                 <table className="w-full border-collapse border bg-white shadow-md">
                     <thead>
                         <tr className="bg-gray-800 text-white">
@@ -44,7 +52,7 @@ const Data = () => {
                         {loading ? (
                             <h1>Loading ...</h1>
                         ) : (
-                            posts.map((post) => (
+                            userId1Posts.map((post) => (
                                 <ListItem key={post.id} post={post} />
                             ))
                         )}
