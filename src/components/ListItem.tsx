@@ -6,10 +6,10 @@ interface ListItemProps {
 
 const ListItem: React.FC<ListItemProps> = ({ post }) => {
     return (
-        <tr>
-            <td>{post.id}</td>
-            <td>{post.title}</td>
-            <td>{post.body}</td>
+        <tr className="hover:bg-gray-100 border">
+            <td className="py-2 px-8 text-center border">{post.id}</td>
+            <td className="py-2 px-8 text-center border">{post.title}</td>
+            <td className="py-2 px-8 text-center border">{post.body}</td>
         </tr>
     );
 };

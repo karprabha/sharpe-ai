@@ -31,13 +31,13 @@ const Data = () => {
 
     return (
         <>
-            <div className="max-w-screen-md mx-auto">
+            <div className="max-w-screen-md mx-auto my-4">
                 <table className="w-full border-collapse border bg-white shadow-md">
                     <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>Title</th>
-                            <th>Body</th>
+                        <tr className="bg-gray-800 text-white">
+                            <th className="p-2">ID</th>
+                            <th className="p-2">Title</th>
+                            <th className="p-2">Body</th>
                         </tr>
                     </thead>
                     <tbody>
