@@ -34,7 +34,7 @@ const Data = () => {
 
     return (
         <>
-            <div className="max-w-screen-md mx-auto my-4">
+            <div className="max-w-screen-md mx-auto my-4 mb-20">
                 <PieChartCard
                     userId1Posts={userId1Posts.length}
                     otherUsersPosts={posts.length - userId1Posts.length}
