@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 
 import { Post } from "../types";
+import ListItem from "../components/ListItem";
 
 const Data = () => {
     const [loading, setLoading] = useState(true);
@@ -17,7 +18,7 @@ const Data = () => {
                 }
 
                 const data: Post[] = await response.json();
-                setPosts(data);
+                setPosts(data.filter((post) => post.userId === 1));
                 setLoading(false);
             } catch (error) {
                 console.error("Error fetching data:", error);
@@ -36,13 +37,7 @@ const Data = () => {
                 <>
                     <ul>
                         {posts.map((post) => (
-                            <li key={post.id}>
-                                <div>
-                                    <p>User ID: {post.userId}</p>
-                                    <p>Name: {post.title}</p>
-                                    <p>Family: {post.body}</p>
-                                </div>
-                            </li>
+                            <ListItem key={post.id} post={post} />
                         ))}
                     </ul>
                 </>
