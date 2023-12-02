@@ -6,13 +6,11 @@ interface ListItemProps {
 
 const ListItem: React.FC<ListItemProps> = ({ post }) => {
     return (
-        <li key={post.id}>
-            <div>
-                <p>User ID: {post.userId}</p>
-                <p>Title: {post.title}</p>
-                <p>Body: {post.body}</p>
-            </div>
-        </li>
+        <tr>
+            <td>{post.id}</td>
+            <td>{post.title}</td>
+            <td>{post.body}</td>
+        </tr>
     );
 };
 

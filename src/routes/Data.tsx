@@ -31,17 +31,26 @@ const Data = () => {
 
     return (
         <>
-            {loading ? (
-                <p>Loading...</p>
-            ) : (
-                <>
-                    <ul>
-                        {posts.map((post) => (
-                            <ListItem key={post.id} post={post} />
-                        ))}
-                    </ul>
-                </>
-            )}
+            <div className="max-w-screen-md mx-auto">
+                <table className="w-full border-collapse border bg-white shadow-md">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Title</th>
+                            <th>Body</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {loading ? (
+                            <h1>Loading ...</h1>
+                        ) : (
+                            posts.map((post) => (
+                                <ListItem key={post.id} post={post} />
+                            ))
+                        )}
+                    </tbody>
+                </table>
+            </div>
         </>
     );
 };
